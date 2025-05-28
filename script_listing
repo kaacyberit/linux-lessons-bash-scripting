@@ -52,10 +52,10 @@ echo "Special characters and quotes in scripts"
 echo "======================================="
 echo "Print one quote - \", 5 quotes - \"\"\"\"\""
 echo "Print one escape symbol - \\"
-echo "To print 5 escape symbols at console we need to write 10 those symbols at scrypt - \\\\\\\\\\"
+echo "To print 5 escape symbols at console we need to write 10 those symbols at script - \\\\\\\\\\"
 echo ""
 echo "same text inside soft and hard quotes"
-echo "Hello (\`date\`) `date`" # character $ escaped with \ to print correctly
+echo "Hello (\`date\`) `date`" # character ' escaped with \ to print correctly
 echo 'Hello (\`date\`) `date`' # text prints as is with all special characters
 echo ""
 echo "Combinations of quotes"
@@ -72,7 +72,7 @@ echo ""
 # by default variable written in CAPS. And to get variable value you need to use $ before variable name. 
 echo "Display some environment variables"
 echo "======================================="
-echo "Hello (env \$USER) $USER"
+echo "Hello (env \$USER) $USER" # character $ escaped with \ to print correctly
 echo "your home dir is: $HOME"
 echo ""
 echo ""
@@ -104,7 +104,7 @@ echo ""
 # when you run a script you can run with parameters. first of all type a script name then space then first parameter, then space then 2-nd parameter, and so on.
 # parameters must be separated with spaces. 
 # if your parameter contains spaces - write it in quotes
-# example: scriptname parameter_1 "parameter two" and so on. 
+# example: script_name parameter_1 "parameter two" and so on. 
 # script can get those parameters thru special variable names like $0 $1 $2.
 # $0 - returns script name itself, $1 - returns first parameter value, $2 - returns second parameter value, and so on. 
 echo "Parameter variables"
@@ -158,7 +158,7 @@ echo ""
 # alias aliasname="COMMAND that will be inserted when you use aliasname in code"
 # aliasname becomes new command and to get result of this command you need to use backticks
 # but here is one trick:
-# aliases has written in .bash_rc or .bash_profile file inside you home directory
+# by default aliases has to be written in .bash_rc or .bash_profile file inside you home directory
 # and by default they roll-out ONLY during LOGIN process.
 # to execute bash script it starts new sub-shell and by default aliases are not expand at sub-shells as there is no login process.
 # to "fix" it we can use shopt command
@@ -265,8 +265,9 @@ SCRIPT NAME: 2_conditions.sh
 clear
 
 
-## 1 - statement simple if/then
-echo "Statement simple if/then"
+## 1 - statements - simple if/then
+# take an attention that before and after brackets have to be space! [ condition ]
+echo "Statements - simple if/then"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 10 and try to guess the secret number"
@@ -279,10 +280,10 @@ echo ""
 echo ""
 
 
-## 2 - statement if/then/else
+## 2 - statements - if/then/else
 # you can use it without else block. in such case if conditions in if brackets is true it will execute everything tat inside "then".
 # if not - script will go forward
-echo "Statement if/then/else"
+echo "Statements - if/then/else"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 10 and try to guess the secret number"
@@ -294,7 +295,10 @@ if [ $GUESSNUM -eq 7 ]
     echo "FALSE! you have loose :("
 fi
 echo ""
+echo ""
 echo "Statement if/then/else to test files (in this example \"file.txt\")"
+echo "============================================================================================"
+echo ""
 FILENAME="file.txt"
 #FILENAME=$1
 #if [ -e $FILENAME ] # to test file existance use -e -a -f
@@ -309,8 +313,8 @@ echo ""
 echo ""
 
 
-## 3 - Statement if/then/elif/else
-echo "Statement if/then/elif/else"
+## 3 - Statements - if/then/elif/else
+echo "Statements - if/then/elif/else"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 3:"
@@ -329,8 +333,8 @@ echo ""
 
 
 
-## 4 - Statement FOR loop
-echo "Statement FOR loop"
+## 4 - Statements - FOR loop
+echo "Statements - FOR loop"
 echo "============================================================================================"
 echo ""
 echo "List all the shell scripts contents of the directory"
@@ -343,17 +347,17 @@ echo ""
 echo ""
 
 
-## 5 - Statement CASE"
-echo "Statement CASE"
+## 5 - Statements - CASE"
+echo "Statements - CASE"
 echo "============================================================================================"
 echo ""
 echo "MAIN MENU"
 echo "=================="
-echo "1) Choise One"
-echo "2) Choise Two"
-echo "3) Choise Three"
+echo "1) Choice One"
+echo "2) Choice Two"
+echo "3) Choice Three"
 echo ""
-echo "Enter your choise:"
+echo "Enter your choice:"
 
 read MENUCHOISE
 
@@ -375,8 +379,8 @@ echo ""
 echo ""
 
 
-## 6 - Statement WHILE loop
-echo "Statement WHILE loop"
+## 6 - Statements - WHILE loop
+echo "Statements - WHILE loop"
 echo "============================================================================================"
 echo ""
 echo "How many times do you want to display \"Hello world\"?" 
@@ -620,7 +624,7 @@ SCRIPT NAME: 5_bash_functions.sh
 # funtion_name, space, () brackets, {} curly brackets
 # funcExample () {function code here}
 # - functions CAN NOT be empty or only with comment
-# - functions must be defined before you called it (it means function definition writes higher at script than function calles)
+# - functions must be defined before you called it (it means function definition writes higher at script than function calls)
 # - you can define function in single line, then you MUST use space after "{" and ";" at end of each line. Even if there is only one line
 # - to call function write function name
 clear
@@ -691,7 +695,7 @@ echo ""
 echo "GLOBAL variable = $GLOBALVAR (before the function call)"
 echo "LOCALVAR variable = $LOCALVAR (before the function call)"
 echo ""
-echo "Calling Function - funcExample()"
+echo "Calling example Function - funcVarScope()"
 echo ""
 funcVarScope
 echo ""
@@ -704,9 +708,9 @@ echo ""
 
 
 ## 4 - functions with parameters
-# parameters passed to script ($1 $2 ...) is NOT visible from script
+# parameters passed to script ($1 $2 ...) is NOT visible from function
 # to make them visible you need to create global variable and assign to it a value of script parameter
-# PARAM1=$1 - now variable PARAM1 is visible from function, and its value its equal $1
+# PARAM1=$1 - now variable PARAM1 is visible from function, and its value equal $1
 # passing parameters to function is equal to passing parameters to script
 # call function and then parameters space delimited
 echo "functions with parameters"
@@ -835,7 +839,7 @@ MESSAGE="Something to say"
 XCOORD=10
 YCOORD=20
 # function declarations - start
-# display the infobox and our mesage
+# display the infobox and our message
 funcDisplayInfoBox () 
 {
   $INFOBOX --title "$1" --infobox "$2" "$3" "$4"
@@ -857,11 +861,11 @@ funcDisplayMenuBox ()
   2 "Display Goodbye World" \
   3 "Display Nothing" \
   X "Exit" \
-  2>choice.txt
+  2>filechoice.txt
 }
 
 funcDisplayInputBox () {
-  $INPUTBOX --title "$1" --inputbox "$2" "$3" "$4" 2>tmpfile.txt
+  $INPUTBOX --title "$1" --inputbox "$2" "$3" "$4" 2>filetmp.txt
 }
 
 # function declarations - stop
@@ -876,7 +880,7 @@ if [ "$1" == "warning" ]; then
 elif [ "$1" == "menu" ]; then
   funcDisplayMenuBox
   
-  case "`cat choice.txt`" in
+  case "`cat filechoice.txt`" in
     1) echo "Hello World";;
     2) echo "Goodbye World";;
     3) echo "Nothing";;
@@ -886,8 +890,8 @@ elif [ "$1" == "menu" ]; then
 
 elif [ "$1" == "input" ]; then
   funcDisplayInputBox "Display File Name" "Which file in the current directory do you want to display?" "10" "20"
-  if [ "`cat tmpfile.txt`" != "" ]; then
-    cat "`cat tmpfile.txt`"
+  if [ "`cat filetmp.txt`" != "" ]; then
+    cat "`cat filetmp.txt`"
   else
     echo "Nothing to do"
   fi
@@ -897,6 +901,13 @@ else
   funcDisplayInfoBox "Information..." "You are not doing anything fun..." "11" "21" "2"
   echo "Not doing anything, back to regular scripting..."
 fi
+echo ""
+echo ""
+
+# cleaning up...
+echo "Cleaning up the temp files..."
+rm -rf filetmp*.txt
+rm -rf filechoice.txt
 echo ""
 echo ""
 
@@ -921,8 +932,8 @@ echo "==========================================================================
 # SIGTERM - kill command
 # SIGTSTP - ctrl+z
 # global variables
-TMPFILE="tmpfile.txt"
-TMPFILE2="tmpfile2.txt"
+TMPFILE1="filetmp1.txt"
+TMPFILE2="filetmp2.txt"
 trap 'funcMyExit' EXIT
 # function declarations - start
 #
@@ -931,15 +942,15 @@ funcMyExit ()
 {
   echo "Exit Intercepted..."
   echo "Cleaning up the temp files..."
-  rm -rf tmpfil*.txt
+  rm -rf filetmp*.txt
   exit 255
 }
 # function declarations - stop
 #
 # script - start
-echo "Write something to tmp file for later use..." > $TMPFILE
+echo "Write something to tmp file for later use...   " > $TMPFILE1
 echo "Write something to tmp file 2 for later user..." > $TMPFILE2
-echo "Trying to copy the indicated file before processing..."cp -rf $1 newfileeeeeeeeee.txt 2>/dev/null
+echo "Trying to copy the indicated file before processing..."cp -rf $1 some_file_name.txt 2>/dev/null
 if [ "$?" -eq "0" ]; then
   echo "Everything worked out ok..."
 else
@@ -1001,7 +1012,7 @@ fi
 done < tmplisting.txt
 
 chmod 755 "$DOCFILE"
-rm tmplisting.txt
+rm -rf tmplisting.txt
 echo "$DOCFILE was created"
 ==============================
 SCRIPT NAME: shellexpansion.sh 

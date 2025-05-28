@@ -3,8 +3,9 @@
 clear
 
 
-## 1 - statement simple if/then
-echo "Statement simple if/then"
+## 1 - statements - simple if/then
+# take an attention that before and after brackets have to be space! [ condition ]
+echo "Statements - simple if/then"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 10 and try to guess the secret number"
@@ -17,10 +18,10 @@ echo ""
 echo ""
 
 
-## 2 - statement if/then/else
+## 2 - statements - if/then/else
 # you can use it without else block. in such case if conditions in if brackets is true it will execute everything tat inside "then".
 # if not - script will go forward
-echo "Statement if/then/else"
+echo "Statements - if/then/else"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 10 and try to guess the secret number"
@@ -32,7 +33,10 @@ if [ $GUESSNUM -eq 7 ]
     echo "FALSE! you have loose :("
 fi
 echo ""
+echo ""
 echo "Statement if/then/else to test files (in this example \"file.txt\")"
+echo "============================================================================================"
+echo ""
 FILENAME="file.txt"
 #FILENAME=$1
 #if [ -e $FILENAME ] # to test file existance use -e -a -f
@@ -47,8 +51,8 @@ echo ""
 echo ""
 
 
-## 3 - Statement if/then/elif/else
-echo "Statement if/then/elif/else"
+## 3 - Statements - if/then/elif/else
+echo "Statements - if/then/elif/else"
 echo "============================================================================================"
 echo ""
 echo "Enter a number between 1 and 3:"
@@ -67,8 +71,8 @@ echo ""
 
 
 
-## 4 - Statement FOR loop
-echo "Statement FOR loop"
+## 4 - Statements - FOR loop
+echo "Statements - FOR loop"
 echo "============================================================================================"
 echo ""
 echo "List all the shell scripts contents of the directory"
@@ -81,17 +85,17 @@ echo ""
 echo ""
 
 
-## 5 - Statement CASE"
-echo "Statement CASE"
+## 5 - Statements - CASE"
+echo "Statements - CASE"
 echo "============================================================================================"
 echo ""
 echo "MAIN MENU"
 echo "=================="
-echo "1) Choise One"
-echo "2) Choise Two"
-echo "3) Choise Three"
+echo "1) Choice One"
+echo "2) Choice Two"
+echo "3) Choice Three"
 echo ""
-echo "Enter your choise:"
+echo "Enter your choice:"
 
 read MENUCHOISE
 
@@ -113,8 +117,8 @@ echo ""
 echo ""
 
 
-## 6 - Statement WHILE loop
-echo "Statement WHILE loop"
+## 6 - Statements - WHILE loop
+echo "Statements - WHILE loop"
 echo "============================================================================================"
 echo ""
 echo "How many times do you want to display \"Hello world\"?" 

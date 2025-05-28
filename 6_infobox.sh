@@ -14,7 +14,7 @@ MESSAGE="Something to say"
 XCOORD=10
 YCOORD=20
 # function declarations - start
-# display the infobox and our mesage
+# display the infobox and our message
 funcDisplayInfoBox () 
 {
   $INFOBOX --title "$1" --infobox "$2" "$3" "$4"
@@ -36,11 +36,11 @@ funcDisplayMenuBox ()
   2 "Display Goodbye World" \
   3 "Display Nothing" \
   X "Exit" \
-  2>choice.txt
+  2>filechoice.txt
 }
 
 funcDisplayInputBox () {
-  $INPUTBOX --title "$1" --inputbox "$2" "$3" "$4" 2>tmpfile.txt
+  $INPUTBOX --title "$1" --inputbox "$2" "$3" "$4" 2>filetmp.txt
 }
 
 # function declarations - stop
@@ -55,7 +55,7 @@ if [ "$1" == "warning" ]; then
 elif [ "$1" == "menu" ]; then
   funcDisplayMenuBox
   
-  case "`cat choice.txt`" in
+  case "`cat filechoice.txt`" in
     1) echo "Hello World";;
     2) echo "Goodbye World";;
     3) echo "Nothing";;
@@ -65,8 +65,8 @@ elif [ "$1" == "menu" ]; then
 
 elif [ "$1" == "input" ]; then
   funcDisplayInputBox "Display File Name" "Which file in the current directory do you want to display?" "10" "20"
-  if [ "`cat tmpfile.txt`" != "" ]; then
-    cat "`cat tmpfile.txt`"
+  if [ "`cat filetmp.txt`" != "" ]; then
+    cat "`cat filetmp.txt`"
   else
     echo "Nothing to do"
   fi
@@ -76,6 +76,13 @@ else
   funcDisplayInfoBox "Information..." "You are not doing anything fun..." "11" "21" "2"
   echo "Not doing anything, back to regular scripting..."
 fi
+echo ""
+echo ""
+
+# cleaning up...
+echo "Cleaning up the temp files..."
+rm -rf filetmp*.txt
+rm -rf filechoice.txt
 echo ""
 echo ""
 

@@ -3,7 +3,7 @@
 # funtion_name, space, () brackets, {} curly brackets
 # funcExample () {function code here}
 # - functions CAN NOT be empty or only with comment
-# - functions must be defined before you called it (it means function definition writes higher at script than function calles)
+# - functions must be defined before you called it (it means function definition writes higher at script than function calls)
 # - you can define function in single line, then you MUST use space after "{" and ";" at end of each line. Even if there is only one line
 # - to call function write function name
 clear
@@ -74,7 +74,7 @@ echo ""
 echo "GLOBAL variable = $GLOBALVAR (before the function call)"
 echo "LOCALVAR variable = $LOCALVAR (before the function call)"
 echo ""
-echo "Calling Function - funcExample()"
+echo "Calling example Function - funcVarScope()"
 echo ""
 funcVarScope
 echo ""
@@ -87,9 +87,9 @@ echo ""
 
 
 ## 4 - functions with parameters
-# parameters passed to script ($1 $2 ...) is NOT visible from script
+# parameters passed to script ($1 $2 ...) is NOT visible from function
 # to make them visible you need to create global variable and assign to it a value of script parameter
-# PARAM1=$1 - now variable PARAM1 is visible from function, and its value its equal $1
+# PARAM1=$1 - now variable PARAM1 is visible from function, and its value equal $1
 # passing parameters to function is equal to passing parameters to script
 # call function and then parameters space delimited
 echo "functions with parameters"

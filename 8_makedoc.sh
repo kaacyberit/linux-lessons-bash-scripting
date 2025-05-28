@@ -18,5 +18,5 @@ fi
 done < tmplisting.txt
 
 chmod 755 "$DOCFILE"
-rm tmplisting.txt
+rm -rf tmplisting.txt
 echo "$DOCFILE was created"

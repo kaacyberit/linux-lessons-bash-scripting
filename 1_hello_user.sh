@@ -48,10 +48,10 @@ echo "Special characters and quotes in scripts"
 echo "======================================="
 echo "Print one quote - \", 5 quotes - \"\"\"\"\""
 echo "Print one escape symbol - \\"
-echo "To print 5 escape symbols at console we need to write 10 those symbols at scrypt - \\\\\\\\\\"
+echo "To print 5 escape symbols at console we need to write 10 those symbols at script - \\\\\\\\\\"
 echo ""
 echo "same text inside soft and hard quotes"
-echo "Hello (\`date\`) `date`" # character $ escaped with \ to print correctly
+echo "Hello (\`date\`) `date`" # character ' escaped with \ to print correctly
 echo 'Hello (\`date\`) `date`' # text prints as is with all special characters
 echo ""
 echo "Combinations of quotes"
@@ -68,7 +68,7 @@ echo ""
 # by default variable written in CAPS. And to get variable value you need to use $ before variable name. 
 echo "Display some environment variables"
 echo "======================================="
-echo "Hello (env \$USER) $USER"
+echo "Hello (env \$USER) $USER" # character $ escaped with \ to print correctly
 echo "your home dir is: $HOME"
 echo ""
 echo ""
@@ -100,7 +100,7 @@ echo ""
 # when you run a script you can run with parameters. first of all type a script name then space then first parameter, then space then 2-nd parameter, and so on.
 # parameters must be separated with spaces. 
 # if your parameter contains spaces - write it in quotes
-# example: scriptname parameter_1 "parameter two" and so on. 
+# example: script_name parameter_1 "parameter two" and so on. 
 # script can get those parameters thru special variable names like $0 $1 $2.
 # $0 - returns script name itself, $1 - returns first parameter value, $2 - returns second parameter value, and so on. 
 echo "Parameter variables"
@@ -154,7 +154,7 @@ echo ""
 # alias aliasname="COMMAND that will be inserted when you use aliasname in code"
 # aliasname becomes new command and to get result of this command you need to use backticks
 # but here is one trick:
-# aliases has written in .bash_rc or .bash_profile file inside you home directory
+# by default aliases has to be written in .bash_rc or .bash_profile file inside you home directory
 # and by default they roll-out ONLY during LOGIN process.
 # to execute bash script it starts new sub-shell and by default aliases are not expand at sub-shells as there is no login process.
 # to "fix" it we can use shopt command

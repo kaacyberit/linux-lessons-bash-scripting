@@ -13,8 +13,8 @@ echo "==========================================================================
 # SIGTERM - kill command
 # SIGTSTP - ctrl+z
 # global variables
-TMPFILE="tmpfile.txt"
-TMPFILE2="tmpfile2.txt"
+TMPFILE1="filetmp1.txt"
+TMPFILE2="filetmp2.txt"
 trap 'funcMyExit' EXIT
 # function declarations - start
 #
@@ -23,15 +23,15 @@ funcMyExit ()
 {
   echo "Exit Intercepted..."
   echo "Cleaning up the temp files..."
-  rm -rf tmpfil*.txt
+  rm -rf filetmp*.txt
   exit 255
 }
 # function declarations - stop
 #
 # script - start
-echo "Write something to tmp file for later use..." > $TMPFILE
+echo "Write something to tmp file for later use...   " > $TMPFILE1
 echo "Write something to tmp file 2 for later user..." > $TMPFILE2
-echo "Trying to copy the indicated file before processing..."cp -rf $1 newfileeeeeeeeee.txt 2>/dev/null
+echo "Trying to copy the indicated file before processing..."cp -rf $1 some_file_name.txt 2>/dev/null
 if [ "$?" -eq "0" ]; then
   echo "Everything worked out ok..."
 else
